@@ -1,0 +1,26 @@
+# Multi-node Kind cluster. Each "node" is a Docker container running a full
+# Kubernetes node (kubelet + containerd) inside it.
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: k8s-os
+nodes:
+  # The control plane runs the API server, etcd, scheduler, and controller manager.
+  - role: control-plane
+    kubeadmConfigPatches:
+      - |
+        kind: InitConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: "ingress-ready=true"
+    # Forward host ports 80/443 to this node so the ingress controller
+    # (Phase 1) is reachable at localhost without port-forwarding.
+    extraPortMappings:
+      - containerPort: 80
+        hostPort: 80
+        protocol: TCP
+      - containerPort: 443
+        hostPort: 443
+        protocol: TCP
+  # Workers run application pods. Two of them lets the scheduler make a real choice.
+  - role: worker
+  - role: worker

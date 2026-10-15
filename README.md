@@ -40,8 +40,11 @@ A learning project: run a small three-tier app (Next.js, FastAPI, PostgreSQL) on
 
 ## Layout
 
-Directories are added as each phase lands. Notes on what was learned go in `docs/`.
+- `cluster/`: Kind cluster config
+- `docs/`: notes on what was set up and learned, one file per step
+
+More directories are added as each phase lands.
 
 ## Status
 
-Phase 0 not started.
+Phase 0 in progress: tooling installed (Colima, Docker, kind, kubectl, helm), cluster config written, cluster not yet created. See `docs/00-setup-and-environment.md`.
