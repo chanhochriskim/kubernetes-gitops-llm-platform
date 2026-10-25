@@ -41,10 +41,11 @@ A learning project: run a small three-tier app (Next.js, FastAPI, PostgreSQL) on
 ## Layout
 
 - `cluster/`: Kind cluster config
+- `manifests/`: Kubernetes manifests, grouped by phase
 - `docs/`: notes on what was set up and learned, one file per step
 
 More directories are added as each phase lands.
 
 ## Status
 
-Phase 0 in progress: tooling installed (Colima, Docker, kind, kubectl, helm), cluster config written, cluster not yet created. See `docs/00-setup-and-environment.md`.
+Phase 0 in progress: cluster created, pod trace done (scheduling, PID and namespaces, cgroup path). Remaining: look at kubelet and containerd, try a cgroup limit by hand. See `docs/00-setup-and-environment.md` and `docs/01-cluster-anatomy.md`.
