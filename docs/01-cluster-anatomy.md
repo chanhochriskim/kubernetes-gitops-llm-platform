@@ -40,3 +40,19 @@ The path encodes the pod's QoS class (`besteffort`, because we set no requests o
 
 ## The pod restarted 20 times in a day
 `sleep 3600` exits with code 0 after one hour. The default `restartPolicy: Always` makes the kubelet start it again every time. Kubernetes keeps a pod running even when the process finishes cleanly. This is the same idea as a reconcile loop: desired state is "running", so a finished process is a difference to fix.
+
+## Resource limits are numbers in cgroup files
+`manifests/phase0/limit-demo.yaml` sets requests (cpu 50m, memory 32Mi) and limits (cpu 100m, memory 64Mi). On the node, in the pod's cgroup directory:
+
+| Setting | Value | Meaning |
+|---|---|---|
+| `memory.max` | 67108864 | 64 x 1024 x 1024 bytes: the hard memory limit. Going over triggers the cgroup OOM killer. |
+| `memory.current` | 385024 | what the container uses right now (about 376 KiB) |
+| `cpu.max` | `10000 100000` | quota 10 ms of CPU time per 100 ms period = 0.1 CPU. Going over means throttling, not killing. |
+| `cpu.weight` | 11 | relative share under contention, derived from the CPU request |
+
+The directory moved from `besteffort` to `burstable` (QoS class `Burstable`) because requests and limits are set but not equal.
+
+`/sys/fs/cgroup` is `cgroup2fs`, a virtual filesystem. The files take no disk space; they are the kernel's settings exposed as files. A limit set in YAML is, in the end, a number written into one of these files by the kubelet and containerd.
+
+Memory limits are enforced (kill); CPU limits are rate limits (throttle). Phase 3 triggers both on purpose.
