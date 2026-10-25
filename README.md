@@ -42,6 +42,7 @@ A learning project: run a small three-tier app (Next.js, FastAPI, PostgreSQL) on
 
 - `cluster/`: Kind cluster config
 - `manifests/`: Kubernetes manifests, grouped by phase
+- `blog/`: beginner-friendly notes, read in order
 - `docs/`: notes on what was set up and learned, one file per step
 
 More directories are added as each phase lands.
