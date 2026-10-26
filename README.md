@@ -49,4 +49,4 @@ More directories are added as each phase lands.
 
 ## Status
 
-Phase 0 in progress: cluster created, pod trace done (scheduling, PID and namespaces, cgroup path). Remaining: look at kubelet and containerd, try a cgroup limit by hand. See `docs/00-setup-and-environment.md` and `docs/01-cluster-anatomy.md`.
+Phase 0 complete: cluster created, pod traced to its process, namespaces and cgroup, limits read from cgroup files, review session done. Next: Phase 1 (Deployments, Services, Postgres, ingress and TLS). See `blog/` for the notes and `docs/` for the technical write-ups.
