@@ -10,5 +10,6 @@ Plain-language notes on what was built and learned in each session. Read them in
 6. [Phase 0 review session](06-phase-0-review-session.md): the Q&A we did, with wrong guesses and fixes
 7. [Phase 1, step 1: Deployments](07-phase-1-deployments.md): the "I want 3 pods" loop
 8. [Phase 1, step 2: Services](08-phase-1-services.md): a stable address for changing pods
+9. [Phase 1, step 3: Probes](09-phase-1-probes.md): readiness vs liveness, tested by breaking a pod
 
 These are written for a beginner. The more technical notes are in `../docs/`.
