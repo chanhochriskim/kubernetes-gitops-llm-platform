@@ -19,3 +19,15 @@ spec:
           image: nginx:1.27-alpine
           ports:
             - containerPort: 80
+          # Readiness: "can you take traffic?" Failing removes the pod from the Service. No restart.
+          readinessProbe:
+            httpGet:
+              path: /index.html
+              port: 80
+            periodSeconds: 2
+            failureThreshold: 2
+          # Liveness: "are you stuck?" Failing makes the kubelet restart the container.
+          livenessProbe:
+            tcpSocket:
+              port: 80
+            periodSeconds: 5
