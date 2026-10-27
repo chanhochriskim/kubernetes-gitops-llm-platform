@@ -49,4 +49,4 @@ More directories are added as each phase lands.
 
 ## Status
 
-Phase 0 complete: cluster created, pod traced to its process, namespaces and cgroup, limits read from cgroup files, review session done. Next: Phase 1 (Deployments, Services, Postgres, ingress and TLS). See `blog/` for the notes and `docs/` for the technical write-ups.
+Phase 0 complete. Phase 1 in progress: Deployment, Service, probes and rolling updates done on a stand-in `hello` app. Remaining: ConfigMaps and Secrets, Postgres on a StatefulSet, the FastAPI backend calling a model, ingress and HTTPS. See `blog/` for beginner notes and `docs/` for technical write-ups.
