@@ -1,0 +1,12 @@
+# A Service gives the "hello" pods one stable IP and DNS name.
+# It finds its pods by label, not by name or IP, so replaced pods are picked up automatically.
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello
+spec:
+  selector:
+    app: hello          # send traffic to pods with this label
+  ports:
+    - port: 80          # port the Service listens on
+      targetPort: 80    # port on the pod to forward to
