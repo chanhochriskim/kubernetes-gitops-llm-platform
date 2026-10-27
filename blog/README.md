@@ -8,5 +8,6 @@ Plain-language notes on what was built and learned in each session. Read them in
 4. [Commands cheat sheet](04-commands-cheatsheet.md): the commands we used and what they do
 5. [Review guide](05-review-guide.md): how to study these notes, with a quiz
 6. [Phase 0 review session](06-phase-0-review-session.md): the Q&A we did, with wrong guesses and fixes
+7. [Phase 1, step 1: Deployments](07-phase-1-deployments.md): the "I want 3 pods" loop
 
 These are written for a beginner. The more technical notes are in `../docs/`.
