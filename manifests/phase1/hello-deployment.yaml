@@ -1,0 +1,21 @@
+# Step 1 of Phase 1: a Deployment keeps N copies of a pod running.
+# "hello" is a stand-in web server so we can learn Deployments before the real app.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello
+spec:
+  replicas: 3                  # the number we WANT
+  selector:
+    matchLabels:
+      app: hello               # which pods belong to this Deployment
+  template:                    # the blueprint for each pod
+    metadata:
+      labels:
+        app: hello             # must match the selector above
+    spec:
+      containers:
+        - name: web
+          image: nginx:1.27-alpine
+          ports:
+            - containerPort: 80
