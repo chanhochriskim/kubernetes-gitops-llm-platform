@@ -12,5 +12,6 @@ Plain-language notes on what was built and learned in each session. Read them in
 8. [Phase 1, step 2: Services](08-phase-1-services.md): a stable address for changing pods
 9. [Phase 1, step 3: Probes](09-phase-1-probes.md): readiness vs liveness, tested by breaking a pod
 10. [Phase 1, step 4: Rolling updates](10-phase-1-rolling-updates.md): a broken update stalls safely, then rolls back
+11. [Phase 1, step 5: ConfigMaps and Secrets](11-phase-1-config-and-secrets.md): settings, secrets, and what base64 really is
 
 These are written for a beginner. The more technical notes are in `../docs/`.
