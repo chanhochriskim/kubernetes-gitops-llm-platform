@@ -49,4 +49,4 @@ More directories are added as each phase lands.
 
 ## Status
 
-Phase 0 complete. Phase 1 in progress: Deployment, Service, probes and rolling updates done on a stand-in `hello` app. Remaining: ConfigMaps and Secrets, Postgres on a StatefulSet, the FastAPI backend calling a model, ingress and HTTPS. See `blog/` for beginner notes and `docs/` for technical write-ups.
+Phase 0 complete. Phase 1 in progress: Deployment, Service, probes, rolling updates, ConfigMaps and Secrets, and Postgres on a StatefulSet with persistent storage are done (on a stand-in `hello` app and a demo database). Remaining: FastAPI backend calling a model, Next.js frontend, ingress, and HTTPS with cert-manager. See `blog/` for beginner notes and `docs/` for technical write-ups.
