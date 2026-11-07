@@ -15,5 +15,6 @@ Plain-language notes on what was built and learned in each session. Read them in
 11. [Phase 1, step 5: ConfigMaps and Secrets](11-phase-1-config-and-secrets.md): settings, secrets, and what base64 really is
 12. [Phase 1, step 6: Postgres and storage](12-phase-1-postgres-storage.md): data that survives a deleted pod
 13. [Phase 1, step 7: The backend and images](13-phase-1-backend-and-images.md): build an image, hit ImagePullBackOff, load it into Kind
+14. [Phase 1, step 8: The frontend and chained Services](14-phase-1-frontend-and-service-chain.md): a reverse proxy between the browser and the backend
 
 These are written for a beginner. The more technical notes are in `../docs/`.

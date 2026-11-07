@@ -32,7 +32,7 @@ Platform, SRE, DevOps and backend roles use the same few ideas: declarative conf
 ## Stack
 
 - Cluster: Kind (3 nodes: 1 control plane, 2 workers), on Colima and Docker
-- App: Next.js frontend, FastAPI backend, PostgreSQL
+- App: static nginx frontend (Next.js planned), FastAPI backend, PostgreSQL
 - Ingress and TLS: Ingress-NGINX, cert-manager (self-signed)
 - GitOps: Argo CD
 - Scaling: metrics-server, Horizontal Pod Autoscaler
@@ -53,7 +53,7 @@ Platform, SRE, DevOps and backend roles use the same few ideas: declarative conf
 - [x] ConfigMaps and Secrets
 - [x] PostgreSQL as a StatefulSet with a persistent volume
 - [x] FastAPI backend with a chat endpoint (fake model mode; real model call is a later swap)
-- [ ] Next.js frontend
+- [x] Frontend: a static page served by nginx that proxies `/api/` to the backend (Next.js can replace it later)
 - [ ] Ingress-NGINX with a local hostname
 - [ ] HTTPS with cert-manager
 
