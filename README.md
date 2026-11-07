@@ -52,7 +52,7 @@ Platform, SRE, DevOps and backend roles use the same few ideas: declarative conf
 - [x] Rolling update, a deliberately broken update, and rollback
 - [x] ConfigMaps and Secrets
 - [x] PostgreSQL as a StatefulSet with a persistent volume
-- [ ] FastAPI backend with a chat endpoint calling a hosted model
+- [x] FastAPI backend with a chat endpoint (fake model mode; real model call is a later swap)
 - [ ] Next.js frontend
 - [ ] Ingress-NGINX with a local hostname
 - [ ] HTTPS with cert-manager

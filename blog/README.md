@@ -14,5 +14,6 @@ Plain-language notes on what was built and learned in each session. Read them in
 10. [Phase 1, step 4: Rolling updates](10-phase-1-rolling-updates.md): a broken update stalls safely, then rolls back
 11. [Phase 1, step 5: ConfigMaps and Secrets](11-phase-1-config-and-secrets.md): settings, secrets, and what base64 really is
 12. [Phase 1, step 6: Postgres and storage](12-phase-1-postgres-storage.md): data that survives a deleted pod
+13. [Phase 1, step 7: The backend and images](13-phase-1-backend-and-images.md): build an image, hit ImagePullBackOff, load it into Kind
 
 These are written for a beginner. The more technical notes are in `../docs/`.
