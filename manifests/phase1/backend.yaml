@@ -1,0 +1,62 @@
+# Chat backend: settings in a ConfigMap, a Deployment with 2 replicas, and a Service.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+data:
+  MODEL_MODE: "fake"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: api
+          image: chat-backend:0.1
+          imagePullPolicy: IfNotPresent   # use the image already on the node; never try a registry
+          ports:
+            - containerPort: 8000
+          env:
+            - name: MODEL_MODE
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-config
+                  key: MODEL_MODE
+            - name: LLM_API_KEY           # only needed in real mode
+              valueFrom:
+                secretKeyRef:
+                  name: llm-api-key
+                  key: key
+                  optional: true          # fake mode runs without this Secret
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: backend
+  ports:
+    - port: 80
+      targetPort: 8000
