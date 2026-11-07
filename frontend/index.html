@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chat demo</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 40rem; margin: 3rem auto; padding: 0 1rem; }
+    input { width: 70%; padding: .5rem; }
+    button { padding: .5rem 1rem; }
+    pre { background: #f4f4f4; padding: 1rem; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>Chat demo</h1>
+  <p>Served by nginx in a pod. Your question goes to <code>/api/chat</code>, which nginx forwards to the backend Service.</p>
+  <input id="q" placeholder="Ask something" value="what is a pod?">
+  <button id="go">Send</button>
+  <pre id="out">(answer appears here)</pre>
+  <script>
+    document.getElementById("go").onclick = async () => {
+      const out = document.getElementById("out");
+      out.textContent = "...";
+      try {
+        const r = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question: document.getElementById("q").value })
+        });
+        out.textContent = JSON.stringify(await r.json(), null, 2);
+      } catch (e) { out.textContent = "error: " + e; }
+    };
+  </script>
+</body>
+</html>
