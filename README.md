@@ -58,10 +58,12 @@ Platform, SRE, DevOps and backend roles use the same few ideas: declarative conf
 - [x] HTTPS with cert-manager (self-signed CA; tested with curl, browser step skipped)
 - [ ] Not done: a liveness-failure test, wiring the backend to Postgres, a real model call
 
-**Phase 2: GitOps** (not started)
-- Install Argo CD and point it at this repo
-- Git is the source of truth; `kubectl` is for inspection only
-- Change things by hand and watch Argo CD revert the drift
+**Phase 2: GitOps** (in progress)
+- [x] Argo CD v3.6.1 installed (dex and notifications scaled to 0 to save memory)
+- [x] An Application watching `deploy/app` on `main`; the app deployed with no `kubectl apply`
+- [x] Drift tested: with self-heal off Argo CD only reports it; with self-heal on it reverts a manual scale in about 2 seconds and recreates a deleted Service in about 6 seconds
+- [ ] Change the app by committing to Git and watch Argo CD deploy it
+- [ ] Bring ingress and cert-manager under Argo CD
 
 **Phase 3: Resources and scaling** (not started)
 - Requests and limits, and how they become cgroup settings
