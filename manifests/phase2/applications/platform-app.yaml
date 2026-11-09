@@ -1,5 +1,5 @@
 # An Argo CD Application: "watch deploy/app on branch main of this repo, and make the
-# default namespace match it." No syncPolicy yet, so syncing is manual at first.
+# default namespace match it." Automated sync with self-heal and prune is on.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -14,3 +14,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: default
+  syncPolicy:
+    automated:
+      prune: true      # delete cluster objects that were removed from Git
+      selfHeal: true   # undo manual changes made in the cluster
