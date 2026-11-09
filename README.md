@@ -46,7 +46,7 @@ Platform, SRE, DevOps and backend roles use the same few ideas: declarative conf
 - [x] Found a container's process, namespaces and cgroup on the node
 - [x] Read CPU and memory limits back from cgroup files
 
-**Phase 1: Declarative app and ingress** (in progress)
+**Phase 1: Declarative app and ingress** (core done)
 - [x] Deployments, ReplicaSets and Services
 - [x] Readiness and liveness probes (readiness tested by breaking a pod)
 - [x] Rolling update, a deliberately broken update, and rollback
@@ -55,7 +55,8 @@ Platform, SRE, DevOps and backend roles use the same few ideas: declarative conf
 - [x] FastAPI backend with a chat endpoint (fake model mode; real model call is a later swap)
 - [x] Frontend: a static page served by nginx that proxies `/api/` to the backend (Next.js can replace it later)
 - [x] Ingress-NGINX (v1.15.1, vendored with a kustomize patch) routing `app.local` to the frontend
-- [ ] HTTPS with cert-manager
+- [x] HTTPS with cert-manager (self-signed CA; tested with curl, browser step skipped)
+- [ ] Not done: a liveness-failure test, wiring the backend to Postgres, a real model call
 
 **Phase 2: GitOps** (not started)
 - Install Argo CD and point it at this repo
