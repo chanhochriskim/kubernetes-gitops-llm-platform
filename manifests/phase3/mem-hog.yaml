@@ -1,0 +1,16 @@
+# Phase 3, lesson 1: a process that keeps allocating memory, with a 64Mi limit.
+# `tail /dev/zero` never sees a newline, so it buffers forever and grows until it hits the limit.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mem-hog
+spec:
+  containers:
+    - name: hog
+      image: busybox:1.36
+      command: ["sh", "-c", "tail /dev/zero"]
+      resources:
+        requests:
+          memory: 32Mi
+        limits:
+          memory: 64Mi
