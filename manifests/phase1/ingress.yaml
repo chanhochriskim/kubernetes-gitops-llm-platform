@@ -1,0 +1,18 @@
+# "If the request is for host app.local, send it to the frontend Service on port 80."
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: app.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 80
