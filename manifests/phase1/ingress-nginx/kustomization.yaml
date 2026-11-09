@@ -1,0 +1,15 @@
+# Upstream Kind manifest (deploy.yaml, ingress-nginx controller v1.15.1) plus one patch:
+# pin the controller to the node labeled ingress-ready=true (our control-plane, which has
+# host ports 80/443 mapped to the Mac). Upstream only requires kubernetes.io/os=linux.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - deploy.yaml
+patches:
+  - target:
+      kind: Deployment
+      name: ingress-nginx-controller
+    patch: |-
+      - op: add
+        path: /spec/template/spec/nodeSelector/ingress-ready
+        value: "true"
