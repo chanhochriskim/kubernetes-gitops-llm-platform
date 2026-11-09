@@ -1,0 +1,16 @@
+# An Argo CD Application: "watch deploy/app on branch main of this repo, and make the
+# default namespace match it." No syncPolicy yet, so syncing is manual at first.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: platform-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/chanhochriskim/kubernetes-gitops-llm-platform.git
+    targetRevision: main
+    path: deploy/app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
