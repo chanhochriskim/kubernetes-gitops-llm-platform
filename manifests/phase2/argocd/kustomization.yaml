@@ -1,0 +1,23 @@
+# Upstream Argo CD v3.6.1 install manifest plus a patch that scales two components to 0
+# to save memory on a small laptop: dex (single sign-on) and the notifications controller.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: argocd
+resources:
+  - namespace.yaml
+  - install.yaml
+patches:
+  - target:
+      kind: Deployment
+      name: argocd-dex-server
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 0
+  - target:
+      kind: Deployment
+      name: argocd-notifications-controller
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 0
