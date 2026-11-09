@@ -19,5 +19,6 @@ Plain-language notes on what was built and learned in each session. Read them in
 15. [Phase 1, step 9: Ingress](15-phase-1-ingress.md): the front door, and the scheduling detail we caught
 16. [Phase 1, step 10: HTTPS with cert-manager](16-phase-1-https-cert-manager.md): certificates, CAs, and why curl said no
 17. [Phase 2: GitOps with Argo CD](17-phase-2-argocd-gitops.md): a second reconcile loop, drift, and self-heal
+18. [Phase 3, lesson 1: Limits, OOM and throttling](18-phase-3-limits-oom-and-throttling.md): the kernel kills for memory and slows for CPU
 
 These are written for a beginner. The more technical notes are in `../docs/`.

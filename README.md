@@ -65,10 +65,12 @@ Platform, SRE, DevOps and backend roles use the same few ideas: declarative conf
 - [x] Changed the app by committing to Git (frontend replicas 2 to 3); Argo CD deployed it about 80 seconds after the push (Git is polled)
 - [ ] Bring ingress and cert-manager under Argo CD
 
-**Phase 3: Resources and scaling** (not started)
-- Requests and limits, and how they become cgroup settings
-- Trigger an OOMKill on purpose, read the exit code, then tune
-- HPA on CPU with a Locust load test, observing scale-out and scale-in
+**Phase 3: Resources and scaling** (in progress)
+- [x] Memory limit exceeded: OOMKilled, exit code 137, kernel counters read from `memory.events`
+- [x] CPU limit exceeded: throttling, about 10% of a CPU at a 100m limit, read from `cpu.stat`
+- [ ] Requests vs. limits and QoS classes (which pods are evicted first)
+- [ ] HPA on CPU with a Locust load test, observing scale-out and scale-in
+- [ ] Set limits on the backend and frontend through Git
 
 **Phase 4: Observability** (not started)
 - Prometheus and Grafana via Helm
