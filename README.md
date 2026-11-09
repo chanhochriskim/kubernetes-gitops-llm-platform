@@ -54,7 +54,7 @@ Platform, SRE, DevOps and backend roles use the same few ideas: declarative conf
 - [x] PostgreSQL as a StatefulSet with a persistent volume
 - [x] FastAPI backend with a chat endpoint (fake model mode; real model call is a later swap)
 - [x] Frontend: a static page served by nginx that proxies `/api/` to the backend (Next.js can replace it later)
-- [ ] Ingress-NGINX with a local hostname
+- [x] Ingress-NGINX (v1.15.1, vendored with a kustomize patch) routing `app.local` to the frontend
 - [ ] HTTPS with cert-manager
 
 **Phase 2: GitOps** (not started)
