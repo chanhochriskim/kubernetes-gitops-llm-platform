@@ -62,7 +62,7 @@ Platform, SRE, DevOps and backend roles use the same few ideas: declarative conf
 - [x] Argo CD v3.6.1 installed (dex and notifications scaled to 0 to save memory)
 - [x] An Application watching `deploy/app` on `main`; the app deployed with no `kubectl apply`
 - [x] Drift tested: with self-heal off Argo CD only reports it; with self-heal on it reverts a manual scale in about 2 seconds and recreates a deleted Service in about 6 seconds
-- [ ] Change the app by committing to Git and watch Argo CD deploy it
+- [x] Changed the app by committing to Git (frontend replicas 2 to 3); Argo CD deployed it about 80 seconds after the push (Git is polled)
 - [ ] Bring ingress and cert-manager under Argo CD
 
 **Phase 3: Resources and scaling** (not started)

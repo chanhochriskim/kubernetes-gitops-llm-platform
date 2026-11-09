@@ -34,6 +34,15 @@ Argo CD pulls from GitHub, not from your laptop. A change only counts once it is
 
 These timings are from one run on a small laptop, so treat them as rough.
 
+## A change made through Git
+We edited `deploy/app/frontend.yaml` (replicas 2 to 3), committed, and pushed. Argo CD scaled the frontend to 3 about 80 seconds after the push, with no `kubectl` from us. The Application then showed `Synced` at that commit.
+
+That is slower than the 2 seconds for a hand edit, for a reason:
+- **A change in the cluster** is seen right away. Argo CD watches the cluster for events.
+- **A change in Git** is found by **polling**. Argo CD asks GitHub "anything new?" on a timer. The default is about every 3 minutes, so a push can take anywhere from a moment to about 3 minutes to be noticed. Our 80 seconds is one sample of that range.
+
+A **webhook** from GitHub can make it instant, but that needs GitHub to reach the cluster, which a local laptop cluster cannot offer. A manual refresh of the Application also works.
+
 ## The settings that matter
 - **No sync policy:** Argo CD reports drift and waits.
 - **`automated`:** Argo CD syncs when Git changes.
@@ -50,3 +59,4 @@ These timings are from one run on a small laptop, so treat them as rough.
 - Pull, not push.
 - Self-heal is a setting, off by default.
 - Argo CD sees only what is pushed to GitHub.
+- It reacts to cluster changes at once, but finds Git changes by polling.
