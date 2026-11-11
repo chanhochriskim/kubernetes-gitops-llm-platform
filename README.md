@@ -68,9 +68,9 @@ Platform, SRE, DevOps and backend roles use the same few ideas: declarative conf
 **Phase 3: Resources and scaling** (in progress)
 - [x] Memory limit exceeded: OOMKilled, exit code 137, kernel counters read from `memory.events`
 - [x] CPU limit exceeded: throttling, about 10% of a CPU at a 100m limit, read from `cpu.stat`
-- [ ] Requests vs. limits and QoS classes (which pods are evicted first)
+- [x] QoS classes: BestEffort, Burstable and Guaranteed map to `oom_score_adj` 1000, 994 and -997, read from `/proc`
 - [ ] HPA on CPU with a Locust load test, observing scale-out and scale-in
-- [ ] Set limits on the backend and frontend through Git
+- [x] Requests and limits on the backend and frontend set through Git; Argo CD rolled them out and the cgroup files matched
 
 **Phase 4: Observability** (not started)
 - Prometheus and Grafana via Helm

@@ -20,5 +20,6 @@ Plain-language notes on what was built and learned in each session. Read them in
 16. [Phase 1, step 10: HTTPS with cert-manager](16-phase-1-https-cert-manager.md): certificates, CAs, and why curl said no
 17. [Phase 2: GitOps with Argo CD](17-phase-2-argocd-gitops.md): a second reconcile loop, drift, and self-heal
 18. [Phase 3, lesson 1: Limits, OOM and throttling](18-phase-3-limits-oom-and-throttling.md): the kernel kills for memory and slows for CPU
+19. [Phase 3, lesson 2: QoS classes and limits through Git](19-phase-3-qos-and-limits-via-git.md): who the kernel kills first
 
 These are written for a beginner. The more technical notes are in `../docs/`.
