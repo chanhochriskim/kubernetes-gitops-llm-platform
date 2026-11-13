@@ -1,0 +1,15 @@
+# Upstream metrics-server v0.9.1 plus one flag for Kind: Kind's kubelet certificates are not
+# signed by a CA that metrics-server trusts, so skip kubelet certificate verification.
+# Fine for a local throwaway cluster, not for production.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - components.yaml
+patches:
+  - target:
+      kind: Deployment
+      name: metrics-server
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --kubelet-insecure-tls
