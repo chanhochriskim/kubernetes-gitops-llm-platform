@@ -69,7 +69,8 @@ Platform, SRE, DevOps and backend roles use the same few ideas: declarative conf
 - [x] Memory limit exceeded: OOMKilled, exit code 137, kernel counters read from `memory.events`
 - [x] CPU limit exceeded: throttling, about 10% of a CPU at a 100m limit, read from `cpu.stat`
 - [x] QoS classes: BestEffort, Burstable and Guaranteed map to `oom_score_adj` 1000, 994 and -997, read from `/proc`
-- [ ] HPA on CPU with a Locust load test, observing scale-out and scale-in
+- [x] metrics-server and an HPA on the backend (50% CPU target, 2 to 5 pods), tested with a simple in-cluster load generator (not Locust); scale-up took 1 to 2 minutes, scale-down was clearly slower (5 minute stabilization window)
+- [x] Found and fixed a GitOps trap: Argo CD self-heal and the HPA fought over `replicas`; the HPA now owns it and the HPA lives in `deploy/app/`
 - [x] Requests and limits on the backend and frontend set through Git; Argo CD rolled them out and the cgroup files matched
 
 **Phase 4: Observability** (not started)
