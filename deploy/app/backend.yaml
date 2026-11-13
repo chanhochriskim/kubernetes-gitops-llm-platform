@@ -11,7 +11,8 @@ kind: Deployment
 metadata:
   name: backend
 spec:
-  replicas: 2
+  # replicas is intentionally not set: the HPA (hpa-backend.yaml) owns the replica count.
+  # If Git also set it, Argo CD self-heal and the HPA would keep undoing each other.
   selector:
     matchLabels:
       app: backend
