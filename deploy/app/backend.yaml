@@ -20,10 +20,14 @@ spec:
     metadata:
       labels:
         app: backend
+      annotations:                      # tells Prometheus to scrape this pod
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+        prometheus.io/path: /metrics
     spec:
       containers:
         - name: api
-          image: chat-backend:0.1
+          image: chat-backend:0.2
           imagePullPolicy: IfNotPresent   # use the image already on the node; never try a registry
           ports:
             - containerPort: 8000
