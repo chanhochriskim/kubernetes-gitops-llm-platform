@@ -1,0 +1,18 @@
+# Minimal Prometheus for an 8 GB laptop: server + kube-state-metrics only.
+alertmanager:
+  enabled: false
+prometheus-pushgateway:
+  enabled: false
+prometheus-node-exporter:
+  enabled: false
+kube-state-metrics:
+  enabled: true
+server:
+  retention: 6h               # short on purpose; this is a learning cluster
+  global:
+    scrape_interval: 30s
+  persistentVolume:
+    enabled: false            # data lives in the pod; lost on restart (fine here)
+  resources:
+    requests: {cpu: 100m, memory: 256Mi}
+    limits: {cpu: 500m, memory: 512Mi}

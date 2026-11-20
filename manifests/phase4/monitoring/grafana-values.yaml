@@ -1,0 +1,22 @@
+# Minimal Grafana: no storage, Prometheus datasource preconfigured, admin password from a Secret
+# named grafana-admin that is created from the command line (not in Git).
+persistence:
+  enabled: false
+testFramework:
+  enabled: false
+admin:
+  existingSecret: grafana-admin
+  userKey: admin-user
+  passwordKey: admin-password
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        url: http://prometheus-server
+        access: proxy
+        isDefault: true
+resources:
+  requests: {cpu: 50m, memory: 128Mi}
+  limits: {cpu: 300m, memory: 256Mi}
