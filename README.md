@@ -73,9 +73,12 @@ Platform, SRE, DevOps and backend roles use the same few ideas: declarative conf
 - [x] Found and fixed a GitOps trap: Argo CD self-heal and the HPA fought over `replicas`; the HPA now owns it and the HPA lives in `deploy/app/`
 - [x] Requests and limits on the backend and frontend set through Git; Argo CD rolled them out and the cgroup files matched
 
-**Phase 4: Observability** (not started)
-- Prometheus and Grafana via Helm
-- Dashboards for CPU throttling, memory saturation, restarts and HTTP error rate
+**Phase 4: Observability** (in progress)
+- [x] Minimal Prometheus, kube-state-metrics and Grafana, rendered from Helm charts into `manifests/phase4/monitoring/`
+- [x] Read CPU throttling and memory from Prometheus (cAdvisor); a throttled CPU hog sits at 10 throttled periods per second
+- [x] Backend instrumented with `prometheus-client`: requests by status code and latency, scraped from `/metrics`; measured a 17.9% error rate on a mixed test (5 of 28 requests)
+- [ ] Dashboards as code (CPU throttling, memory against the limit, restarts, error rate)
+- [ ] Use the numbers to tune the requests and limits
 
 ## Things I have verified by running them
 

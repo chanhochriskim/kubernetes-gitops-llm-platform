@@ -22,5 +22,6 @@ Plain-language notes on what was built and learned in each session. Read them in
 18. [Phase 3, lesson 1: Limits, OOM and throttling](18-phase-3-limits-oom-and-throttling.md): the kernel kills for memory and slows for CPU
 19. [Phase 3, lesson 2: QoS classes and limits through Git](19-phase-3-qos-and-limits-via-git.md): who the kernel kills first
 20. [Phase 3, lesson 3: The HPA and a GitOps trap](20-phase-3-hpa-metrics-and-argocd.md): scaling up fast, down slowly, and two controllers fighting
+21. [Phase 4: Prometheus, Grafana and app metrics](21-phase-4-prometheus-grafana-and-app-metrics.md): numbers over time, and why the kernel cannot see HTTP errors
 
 These are written for a beginner. The more technical notes are in `../docs/`.
